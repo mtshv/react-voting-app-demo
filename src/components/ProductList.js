@@ -8,6 +8,7 @@ class ProductList extends Component {
             <div className='ui unstackable items'>
                 {productData.map(product =>
                     <Product
+                        key={'product-' + product.id}
                         id={product.id}
                         title={product.title}
                         description={product.description}
