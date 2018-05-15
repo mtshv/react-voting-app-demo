@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import productSrc from '../img/products/product_1.jpg';
-import userSrc from '../img/userpics/user_0.jpg';
 
 class Product extends Component {
     render() {
+        const { productImageUrl, votes, url, title, description, submitterUserpicUrl } = this.props;
+
         return (
             <div className='item'>
                 <div className='image'>
-                    <img src={productSrc} alt="" />
+                    <img src={productImageUrl} alt='' />
                 </div>
                 <div className='middle aligned content'>
+                    <div className='header'>
+                        <a>
+                            <i className='large caret up icon' />
+                        </a>
+                        {votes}
+                    </div>
                     <div className='description'>
-                        <a>T-shirts</a>
-                        <p>High quality T-Shirts by independent artists and designers from around the world</p>
+                        <a href={url}>
+                            {title}
+                        </a>
+                        <p>
+                            {description}
+                        </p>
                     </div>
                     <div className='extra'>
                         <span>Submitted by:</span>
                         <img
                             className='ui avatar image'
-                            src={userSrc}
-                            alt=""
+                            src={submitterUserpicUrl}
+                            alt=''
                         />
                     </div>
                 </div>
