@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
+    handleUpVote = () => {
+        this.props.onVote(this.props.id);
+    };
+
     render() {
         const { productImageUrl, votes, url, title, description, submitterUserpicUrl } = this.props;
 
@@ -11,7 +15,7 @@ class Product extends Component {
                 </div>
                 <div className='middle aligned content'>
                     <div className='header'>
-                        <a>
+                        <a onClick={this.handleUpVote}>
                             <i className='large caret up icon' />
                         </a>
                         {votes}
