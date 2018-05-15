@@ -4,9 +4,13 @@ import productData from '../productsData';
 
 class ProductList extends Component {
     render() {
+        const products = productData.sort((a, b) => (
+            b.votes - a.votes
+        ));
+
         return (
             <div className='ui unstackable items'>
-                {productData.map(product =>
+                {products.map(product =>
                     <Product
                         key={'product-' + product.id}
                         id={product.id}
