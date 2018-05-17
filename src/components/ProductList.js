@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Product from './Product';
 import productsData from '../productsData';
+import FlipMove from 'react-flip-move';
 
 class ProductList extends Component {
     constructor(props) {
@@ -37,18 +38,27 @@ class ProductList extends Component {
 
         return (
             <div className='ui unstackable items'>
-                {products.map(product =>
-                    <Product
-                        key={'product-' + product.id}
-                        id={product.id}
-                        title={product.title}
-                        description={product.description}
-                        url={product.url}
-                        votes={product.votes}
-                        submitterUserpicUrl={product.submitterUserpicUrl}
-                        productImageUrl={product.productImageUrl}
-                        onVote={this.handleProductVote}
-                    />
+                {products.map((product, i) =>
+                    <FlipMove
+                        duration={500}
+                        appearAnimation='fade'
+                        enterAnimation="elevator"
+                        leaveAnimation="elevator"
+                        typeName={null}
+                        key={i}
+                    >
+                        <Product
+                            key={'product-' + product.id}
+                            id={product.id}
+                            title={product.title}
+                            description={product.description}
+                            url={product.url}
+                            votes={product.votes}
+                            submitterUserpicUrl={product.submitterUserpicUrl}
+                            productImageUrl={product.productImageUrl}
+                            onVote={this.handleProductVote}
+                        />
+                    </FlipMove>
                 )}
             </div>
         );
