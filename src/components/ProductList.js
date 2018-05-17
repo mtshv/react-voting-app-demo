@@ -15,11 +15,11 @@ class ProductList extends Component {
         this.setState({ products: productsData });
     }
 
-    handleProductUpVote = (productId) => {
+    handleProductVote = (productId, isUpVote) => {
         const nextProducts = this.state.products.map((product) => {
             if (product.id === productId) {
                 return Object.assign({}, product, {
-                    votes: product.votes + 1,
+                    votes: isUpVote ? product.votes + 1 : product.votes - 1,
                 });
             } else {
                 return product;
@@ -47,7 +47,7 @@ class ProductList extends Component {
                         votes={product.votes}
                         submitterUserpicUrl={product.submitterUserpicUrl}
                         productImageUrl={product.productImageUrl}
-                        onVote={this.handleProductUpVote}
+                        onVote={this.handleProductVote}
                     />
                 )}
             </div>

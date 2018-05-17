@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
-    handleUpVote = () => {
-        this.props.onVote(this.props.id);
+    handleVote = (voteType) => () => {
+        this.props.onVote(this.props.id, voteType);
     };
 
     render() {
@@ -15,8 +15,11 @@ class Product extends Component {
                 </div>
                 <div className='middle aligned content'>
                     <div className='header'>
-                        <a onClick={this.handleUpVote}>
+                        <a onClick={this.handleVote(true)}>
                             <i className='large caret up icon' />
+                        </a>
+                        <a onClick={this.handleVote(false)}>
+                            <i className='large red caret down icon' />
                         </a>
                         {votes}
                     </div>
